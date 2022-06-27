@@ -1,5 +1,5 @@
 import React from "react"
-import ShopItem from "./ShopItem"
+import ShopItem from "../components/shopItem"
 
 const items = [
   {
