@@ -3,13 +3,11 @@ import { observable } from "mobx"
 interface AllItems {
   name: string
 }
-
 interface Item {
   name: string
   price: number
   count: number
 }
-
 interface CurrentValue {
   price: number
   count: number
@@ -27,7 +25,8 @@ const market = observable({
       (item: AllItems) => item.name === name
     )
     if (!exists) {
-      selectedItems.push({
+      console.log(selectedItems, "whats selected item??")
+      this.selectedItems.push({
         name,
         price,
         count: 1,
