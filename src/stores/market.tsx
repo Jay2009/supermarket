@@ -15,13 +15,15 @@ interface CurrentValue {
 interface Test {}
 
 type MarketType = {
-  selectedItems?: Item[]
+  selectedItems: Item[]
   put: (name: string, price: number, count: number) => void
+  take: (name: string) => void
+  total: () => void | number | string
 }
 
 //interface Tests extends Array<Test> {}
 
-const marketStore: MarketType = observable<MarketType>({
+const marketStore = observable<MarketType>({
   //  @observable
   selectedItems: [],
 
