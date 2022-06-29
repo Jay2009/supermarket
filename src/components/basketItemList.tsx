@@ -12,14 +12,14 @@ interface Iitem {
 }
 
 const BasketItemList = () => {
-  const { market }: any = useStore()
+  const { marketStore }: any = useStore()
 
   const onTake = (name: string) => {
-    market.take(name)
+    marketStore.take(name)
   }
 
   return useObserver(() => {
-    const itemList = market.selectedItems.map((item: Iitem) => (
+    const itemList = marketStore.selectedItems.map((item: Iitem) => (
       <BasketItem
         name={item.name}
         price={item.price}
@@ -34,7 +34,7 @@ const BasketItemList = () => {
         {itemList}
         <hr />
         <p className='mt-4'>
-          <b>총합: </b> {market.total}원
+          <b>총합: </b> {marketStore.total}원
         </p>
       </div>
     )

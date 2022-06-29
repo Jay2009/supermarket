@@ -3,19 +3,19 @@ import { useObserver } from "mobx-react"
 import useStore from "../hooks/useStore"
 
 const Counter = () => {
-  const { counter } = useStore()
+  const { counterStore } = useStore()
 
   const increase = () => {
-    counter.increase()
+    counterStore.increase()
   }
 
   const decrease = () => {
-    counter.decrease()
+    counterStore.decrease()
   }
 
   return useObserver(() => (
     <div className='flex flex-col content-center items-center justify-center'>
-      <h1 className='my-8 flex text-4xl font-bold'>{counter.number}</h1>
+      <h1 className='my-8 flex text-4xl font-bold'>{counterStore.number}</h1>
       <div className=' my-8 flex flex-row content-center justify-center gap-4 align-middle'>
         <button
           onClick={increase}

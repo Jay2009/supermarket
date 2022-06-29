@@ -12,20 +12,25 @@ interface CurrentValue {
   price: number
   count: number
 }
+interface Test {}
+
+type MarketType = {
+  selectedItems?: Item[]
+  put: (name: string, price: number, count: number) => void
+}
 
 //interface Tests extends Array<Test> {}
 
-const market = observable({
+const marketStore: MarketType = observable<MarketType>({
   //  @observable
   selectedItems: [],
 
   // @action
-  put(name: string, price: number, selectedItems: Array<Item>) {
+  put(name: string, price: number) {
     const exists: any = this.selectedItems.find(
       (item: AllItems) => item.name === name
     )
     if (!exists) {
-      console.log(selectedItems, "whats selected item??")
       this.selectedItems.push({
         name,
         price,
@@ -36,14 +41,15 @@ const market = observable({
     exists.count++
   },
 
-  take(name: string, selectedItems: any) {
+  take(name: string) {
     const itemToTake: any = this.selectedItems.find(
       (item: AllItems) => item.name === name
     )
+
     itemToTake.count--
     if (itemToTake.count == 0) {
       // if the number of count is 0
-      selectedItems.remove(itemToTake)
+      this.selectedItems.remove(itemToTake)
     }
   },
 
@@ -58,4 +64,4 @@ const market = observable({
   },
 })
 
-export { market }
+export { marketStore }

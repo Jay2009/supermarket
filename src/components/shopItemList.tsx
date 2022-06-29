@@ -24,10 +24,10 @@ const items = [
 
 const ShopItemList = () => {
   // **** useStore에서 market 연결
-  const { market }: any = useStore()
+  const { marketStore }: any = useStore()
 
   const onPut: any = (name: string, price: number) => {
-    market.put(name, price)
+    marketStore.put(name, price)
   }
   // **** onPut 함수 추가됨
   return useObserver(() => {
