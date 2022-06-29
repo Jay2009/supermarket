@@ -1,18 +1,19 @@
 import { observable } from "mobx"
 
-interface AllItems {
-  name: string
-}
 interface Item {
   name: string
   price: number
   count: number
 }
+
+interface ItemTake {
+  count: number
+  remove: () => void
+}
 interface CurrentValue {
   price: number
   count: number
 }
-interface Test {}
 
 type MarketType = {
   selectedItems: Item[]
@@ -28,10 +29,10 @@ const marketStore = observable<MarketType>({
   selectedItems: [],
 
   // @action
-  put(name: string, price: number) {
-    const exists: any = this.selectedItems.find(
-      (item: AllItems) => item.name === name
-    )
+  put(name, price) {
+    const exists: Item = this.selectedItems.find(
+      (item) => item.name === name
+    ) as Item
     if (!exists) {
       this.selectedItems.push({
         name,
@@ -43,15 +44,15 @@ const marketStore = observable<MarketType>({
     exists.count++
   },
 
-  take(name: string) {
-    const itemToTake: any = this.selectedItems.find(
-      (item: AllItems) => item.name === name
-    )
+  take(name) {
+    const itemToTake: Item = this.selectedItems.find(
+      (item) => item.name === name
+    ) as Item
 
     itemToTake.count--
     if (itemToTake.count == 0) {
       // if the number of count is 0
-      this.selectedItems.remove(itemToTake)
+      this.selectedItems.filter((element) => element !== itemToTake)
     }
   },
 
