@@ -1,15 +1,6 @@
 import { observable } from "mobx"
+import { Item } from "../types/item"
 
-interface Item {
-  name: string
-  price: number
-  count: number
-}
-
-interface ItemTake {
-  count: number
-  remove: () => void
-}
 interface CurrentValue {
   price: number
   count: number

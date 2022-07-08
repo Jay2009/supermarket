@@ -1,12 +1,12 @@
 import React from "react"
 
-interface items {
+interface Items {
   name: string
   price: number
   onPut: (name: string, price: number) => void
 }
 
-const ShopItem = ({ name, price, onPut }: items) => {
+const ShopItem = ({ name, price, onPut }: Items) => {
   return (
     <div
       onClick={() => onPut(name, price)}

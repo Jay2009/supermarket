@@ -1,13 +1,7 @@
 import React from "react"
+import { ItemWithOnTake } from "../types/item"
 
-interface basket {
-  name: string
-  price: number
-  count: number
-  onTake: (name: string) => void
-}
-
-const BasketItem = ({ name, price, count, onTake }: basket) => {
+const BasketItem = ({ name, price, count, onTake }: ItemWithOnTake) => {
   return (
     <div className='mt-4 mb-4 flex w-full'>
       <div className='flex-2'>{name}</div>

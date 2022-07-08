@@ -1,11 +1,11 @@
 import React from "react"
 
-interface shopping {
-  items: any
-  basket: any
+interface Shopping {
+  items: JSX.Element
+  basket: JSX.Element
 }
 
-const SuperMarketTemplate = ({ items, basket }: shopping) => {
+const SuperMarketTemplate = ({ items, basket }: Shopping) => {
   return (
     <div className='ml-auto mr-auto mt-12 flex w-3/4 rounded-xl border border-transparent border-sky-300 shadow-xl'>
       <div className='items-wrapper flex-1  p-2'>
