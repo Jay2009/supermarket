@@ -36,7 +36,7 @@ const Stocks = observable({
   },
 
   async callTesla() {
-    let dataArr: [] = []
+    let dataArr: number[] = []
     await axios.get("/data/tesla.json").then((response) => {
       runInAction(() => {
         this.tesla = response.data.chart.result[0].meta.currency
@@ -44,13 +44,14 @@ const Stocks = observable({
         this.teslaPrice = response.data.chart.result[0].indicators.quote[0].high
 
         for (let i = 0; i < this.teslaTimestamp.length; i++) {
-          dataArr = this.teslaTimestamp.map((val, idx) => [
+          dataArr = this.teslaTimestamp.map((val: number, idx: number) => [
             this.teslaTimestamp[idx] * 1000,
             this.teslaPrice[idx].toFixed(3) === null
               ? 0
               : this.teslaPrice[idx].toFixed(3),
           ])
         }
+        console.log(typeof dataArr, "what is the type????")
         this.teslaTotalData = dataArr
       })
     })
@@ -78,7 +79,7 @@ const Stocks = observable({
   },
 
   async callNvidia() {
-    let dataArr: [] = []
+    let dataArr: any[][] = []
     await axios.get("/data/nvidia.json").then((response) => {
       runInAction(() => {
         this.nvidia = response.data.chart.result[0].meta.currency
@@ -109,11 +110,9 @@ const Stocks = observable({
           response.data.chart.result[0].indicators.quote[0].high
 
         for (let i = 0; i < this.alphabetTimestamp.length; i++) {
-          dataArr = this.alphabetTimestamp.map((val, idx) => [
+          dataArr: [] = this.alphabetTimestamp.map((val, idx) => [
             this.alphabetTimestamp[idx] * 1000,
-            this.alphabetPrice[idx].toFixed(3) === null
-              ? 0
-              : this.alphabetPrice[idx].toFixed(3),
+            this.alphabetPrice[idx] === null ? 0 : this.alphabetPrice[idx],
           ])
         }
         this.alphabetTotalData = dataArr

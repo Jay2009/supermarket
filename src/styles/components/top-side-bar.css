@@ -1,0 +1,17 @@
+.top-bar {
+}
+.main-body {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90%;
+}
+.side-bar {
+  width: 10%;
+  height: 110%;
+}
+.right-main {
+  width: 90%;
+  height: 100%;
+}

@@ -5,25 +5,47 @@ import Image from "next/image"
 export default function Topbar() {
   const router = useRouter()
 
+  const isComposition = router.pathname.indexOf("composition")
+  const filteredPath = router.pathname.split("/", 2)
+
+  console.log("/" + filteredPath[1], "dfdfdf")
+
   const link = [
     {
-      link: "Supermarket",
+      link: "대쉬보드",
       path: "/",
     },
     {
-      link: "Come&Check",
-      path: "/come",
+      link: "구성 현황",
+      path: "/composition",
+    },
+    {
+      link: "이벤트 현황",
+      path: "/event",
+    },
+    {
+      link: "성능 현황",
+      path: "/performance",
+    },
+    {
+      link: "관리자",
+      path: "/admin",
     },
   ]
   return (
     <nav className='navbar'>
       <div className='list'>
+        <div className='logo'>
+          <img src={require("../assets/kepco.png")} className='kepco-logo' />
+          <div className='comp-name'>발전소 작업자 안전 관리 시스템</div>
+        </div>
+
         {link.map((list, i) => {
           return (
             <Link key={i} href={list.path} className='flex justify-center'>
               <a
                 className={
-                  router.pathname === list.path
+                  "/" + filteredPath[1] == list.path
                     ? "select link"
                     : "unselected link"
                 }
@@ -37,6 +59,20 @@ export default function Topbar() {
 
       <style jsx>
         {`
+          .logo {
+            display: flex;
+            flex-direction: raw;
+            width: 170px;
+            height: 40px;
+          }
+          .kepco-logo {
+            width: 50%;
+            margin-right: 10px;
+          }
+          .comp-name {
+            font-size: 10px;
+            width: 50%;
+          }
           .navbar {
             width: 100%;
             display: flex;
@@ -51,7 +87,7 @@ export default function Topbar() {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 200px;
+            gap: 100px;
           }
           .link {
             font-weight: 600;
