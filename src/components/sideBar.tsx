@@ -2,12 +2,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import { useState } from "react"
-
-interface LinkObject {
-  link: string
-  path: string
-}
-export interface CustomLinkObj extends Array<LinkObject> {}
+import { CustomLinkObj } from "../../types/item"
 
 let links: CustomLinkObj = []
 
@@ -16,63 +11,59 @@ export default function SideBar() {
   const filteredPath = router.pathname.split("/", 2)
   const [isOpened, setIsOpened] = useState(false)
 
-  if (filteredPath[1] == "composition") {
+  if (filteredPath[1] == "stock") {
     links = [
       {
-        link: "CCTV",
-        path: "/composition",
+        link: "Korea Stock",
+        path: "/stock",
       },
       {
-        link: "환경 센서",
-        path: "/composition/env-sensor",
+        link: "U.S Stock",
+        path: "/stock/us",
       },
       {
-        link: "실내 측위",
-        path: "/composition/gps",
+        link: "Shanghai Stock",
+        path: "/stock/shanghai",
       },
       {
-        link: "스마트 밴드",
-        path: "/composition/smart-band",
+        link: "HongKong Stock",
+        path: "/stock/hongkong",
       },
       {
-        link: "스마트 워치",
-        path: "/composition/smart-watch",
+        link: "Europe Stock",
+        path: "/stock/europe",
       },
       {
-        link: "안전 고리",
-        path: "/composition/safety-hook",
+        link: "Etc",
+        path: "/stock/etc",
       },
     ]
   }
-  if (filteredPath[1] == "event") {
+  if (filteredPath[1] == "stock-game") {
     links = [
       {
-        link: "알람 현황",
-        path: "/event",
+        link: "Stock Game",
+        path: "/stock-game",
       },
       {
-        link: "이벤트 이력",
-        path: "/event/event-history",
-      },
-      {
-        link: "임계치 설정",
-        path: "/event/threshold",
+        link: "Test",
+        path: "/stock-game/test",
       },
     ]
   }
-  if (filteredPath[1] == "performance") {
+  if (filteredPath[1] == "stock-community") {
     links = [
       {
-        link: "무슨 센서? ex)",
-        path: "/performance",
+        link: "Community",
+        path: "/stock-community",
       },
     ]
   }
-  if (filteredPath[1] == "admin") {
+  if (filteredPath[1] == "about-jay") {
     links = [
       {
-        link: "사용자 관리",
-        path: "/admin",
+        link: "Me",
+        path: "/about-jay",
       },
     ]
   }
@@ -81,7 +72,7 @@ export default function SideBar() {
     setIsOpened(!isOpened)
   }
   return (
-    <nav className={isOpened == false ? "navbar" : "navbar-close"}>
+    <nav className={isOpened == false ? "nav-bar" : "navbar-close"}>
       <div className='list'>
         <div className='logo'>
           <div onClick={onSlider}>
@@ -102,7 +93,49 @@ export default function SideBar() {
                     : "unselected link"
                 }
               >
-                {list.link}
+                {isOpened == true ? (
+                  list.link == "Korea Stock" ? (
+                    <div className='icon-content'>
+                      <img
+                        src={require("../assets/korea.png")}
+                        className='sub-menu-icon'
+                      />
+                      <div className='icon-title'>{list.link}</div>
+                    </div>
+                  ) : list.link == "U.S Stock" ? (
+                    <div className='icon-content'>
+                      <img
+                        src={require("../assets/us.png")}
+                        className='sub-menu-icon'
+                      />
+                      <div className='icon-title'>{list.link}</div>
+                    </div>
+                  ) : list.link == "Shanghai Stock" ? (
+                    <img
+                      src={require("../assets/china.png")}
+                      className='sub-menu-icon'
+                    />
+                  ) : list.link == "HongKong Stock" ? (
+                    <img
+                      src={require("../assets/hongkong.png")}
+                      className='sub-menu-icon'
+                    />
+                  ) : list.link == "Europe Stock" ? (
+                    <img
+                      src={require("../assets/europe.png")}
+                      className='sub-menu-icon'
+                    />
+                  ) : list.link == "Etc" ? (
+                    <img
+                      src={require("../assets/world.png")}
+                      className='sub-menu-icon'
+                    />
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  list.link
+                )}
               </a>
             </Link>
           )
@@ -122,12 +155,18 @@ export default function SideBar() {
         .burger-logo {
           display: flex;
         }
+        .sub-menu-icon {
+          width: auto;
+          height: auto;
+          max-width: 50px;
+          max-height: 50px;
+        }
         .comp-name {
           font-size: 10px;
           width: 50%;
         }
-        .navbar {
-          width: 100%;
+        .nav-bar {
+          width: 10%;
           height: 100%;
           display: flex;
           flex-direction: column;
@@ -137,7 +176,7 @@ export default function SideBar() {
           box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
         }
         .navbar-close {
-          width: 40%;
+          width: 5%;
           height: 100%;
           display: flex;
           flex-direction: column;

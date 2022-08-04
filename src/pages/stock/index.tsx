@@ -4,20 +4,21 @@ import SideBar from "../../components/sideBar"
 import SuperMarket from "../../components/supermarket"
 import Topbar from "../../components/topBar"
 
-const Cctv = () => {
+const KoreanStock = () => {
   return (
     <div className='h-full w-full'>
       <div className='top-bar'>
         <Topbar />
       </div>
       <div className='main-body'>
-        <div className='side-bar'>
-          <SideBar />
-        </div>
-        <div className='right-main'>Cctv</div>
+        <SideBar />
+
+        <div className='right-main'>korea</div>
+        <div className='test'>dfdfdf</div>
       </div>
+      <style jsx>{``}</style>`
     </div>
   )
 }
 
-export default Cctv
+export default KoreanStock

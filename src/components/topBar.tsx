@@ -4,40 +4,37 @@ import Image from "next/image"
 
 export default function Topbar() {
   const router = useRouter()
-
-  const isComposition = router.pathname.indexOf("composition")
   const filteredPath = router.pathname.split("/", 2)
 
-  console.log("/" + filteredPath[1], "dfdfdf")
+  console.log("/" + filteredPath[1], "what pagee url???")
 
   const link = [
     {
-      link: "대쉬보드",
+      link: "Home",
       path: "/",
     },
     {
-      link: "구성 현황",
-      path: "/composition",
+      link: "Stock",
+      path: "/stock",
     },
     {
-      link: "이벤트 현황",
-      path: "/event",
+      link: "Stock Game",
+      path: "/stock-game",
     },
     {
-      link: "성능 현황",
-      path: "/performance",
+      link: "Stock Community",
+      path: "/stock-community",
     },
     {
-      link: "관리자",
-      path: "/admin",
+      link: "About Jay",
+      path: "/about-jay",
     },
   ]
   return (
-    <nav className='navbar'>
+    <nav className='top-bar'>
       <div className='list'>
         <div className='logo'>
-          <img src={require("../assets/kepco.png")} className='kepco-logo' />
-          <div className='comp-name'>발전소 작업자 안전 관리 시스템</div>
+          <img src={require("../assets/Jay_logo.png")} className='jay-logo' />
         </div>
 
         {link.map((list, i) => {
@@ -62,18 +59,22 @@ export default function Topbar() {
           .logo {
             display: flex;
             flex-direction: raw;
-            width: 170px;
-            height: 40px;
+            width: 100px;
+            height: 50px;
+            margin-left: -5px;
           }
-          .kepco-logo {
-            width: 50%;
-            margin-right: 10px;
+          .jay-logo {
+            border-radius: 10px;
+            width: auto;
+            height: auto;
+            max-width: 50px;
+            max-height: 50px;
           }
           .comp-name {
             font-size: 10px;
             width: 50%;
           }
-          .navbar {
+          .top-bar {
             width: 100%;
             display: flex;
             align-items: center;

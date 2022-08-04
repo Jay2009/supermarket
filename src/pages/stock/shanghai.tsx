@@ -4,20 +4,18 @@ import SideBar from "../../components/sideBar"
 import SuperMarket from "../../components/supermarket"
 import Topbar from "../../components/topBar"
 
-const Sensor = () => {
+const ShanghaiStock = () => {
   return (
     <div className='h-full w-full'>
       <div className='top-bar'>
         <Topbar />
       </div>
       <div className='main-body'>
-        <div className='side-bar'>
-          <SideBar />
-        </div>
-        <div className='right-main'></div>
+        <SideBar />
+        <div className='right-main'>Gps</div>
       </div>
     </div>
   )
 }
 
-export default Sensor
+export default ShanghaiStock
